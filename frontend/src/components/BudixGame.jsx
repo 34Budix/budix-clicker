@@ -49,23 +49,6 @@ const BudixGame = () => {
 
   const evolutionStage = getEvolutionStage();
 
-  // Get evolution stage name based on stage number
-  const getEvolutionStageName = (stage) => {
-    switch (stage) {
-      case 10: return "Galaxy Core";
-      case 9: return "Black Hole";
-      case 8: return "Neutron Star";
-      case 7: return "Solar Flare Star";
-      case 6: return "Plasma Star";
-      case 5: return "Electric Orb";
-      case 4: return "Fire Orb";
-      case 3: return "Flame Orb";
-      case 2: return "Hot Orb";
-      case 1: return "Warm Orb";
-      default: return "Basic Orb";
-    }
-  };
-
   // Auto energy generation
   useEffect(() => {
     if (energyPerSecond > 0) {
