@@ -121,6 +121,102 @@ const BudixGame = () => {
     ));
   }, [energy, upgrades]);
 
+  // Update quest progress
+  useEffect(() => {
+    setQuests(prevQuests => 
+      prevQuests.map(quest => {
+        let currentProgress = 0;
+        
+        switch (quest.type) {
+          case 'clicks':
+            currentProgress = totalClicks;
+            break;
+          case 'energy':
+            currentProgress = Math.floor(energy);
+            break;
+          case 'upgrades':
+            currentProgress = upgrades.reduce((sum, upgrade) => sum + upgrade.level, 0);
+            break;
+          case 'evolution':
+            currentProgress = evolutionStage;
+            break;
+          default:
+            currentProgress = quest.currentProgress;
+        }
+        
+        return { ...quest, currentProgress };
+      })
+    );
+  }, [totalClicks, energy, upgrades, evolutionStage]);
+
+  // Handle quest reward claiming
+  const handleClaimReward = useCallback((questId) => {
+    const quest = quests.find(q => q.id === questId);
+    if (!quest || quest.claimed) return;
+
+    // Apply reward
+    switch (quest.reward.type) {
+      case 'energy':
+        setEnergy(prev => prev + quest.reward.value);
+        break;
+      case 'clickPower':
+        setEnergyPerClick(prev => prev + quest.reward.value);
+        break;
+      case 'autoClicker':
+        setEnergyPerSecond(prev => prev + quest.reward.value);
+        break;
+      default:
+        break;
+    }
+
+    // Mark quest as claimed
+    setQuests(prevQuests => 
+      prevQuests.map(q => 
+        q.id === questId ? { ...q, claimed: true } : q
+      )
+    );
+
+    // Show reward notification (could expand this)
+    console.log(`Quest completed! Reward: ${quest.reward.description}`);
+  }, [quests]);
+
+  // Handle mystery event click
+  const handleMysteryClick = useCallback(() => {
+    const effects = [
+      { type: 'energy', value: 500, message: '+500 Energy!' },
+      { type: 'energy', value: 1000, message: '+1000 Energy Bonus!' },
+      { type: 'energy', value: -250, message: '-250 Energy... Oops!' },
+      { type: 'doubleClick', duration: 10000, message: 'Double Click Power for 10s!' },
+      { type: 'mystery', message: 'Nothing happened... or did it?' },
+      { type: 'energyBoost', value: Math.floor(energy * 0.1), message: `+${Math.floor(energy * 0.1)} Energy Boost!` }
+    ];
+
+    const randomEffect = effects[Math.floor(Math.random() * effects.length)];
+
+    switch (randomEffect.type) {
+      case 'energy':
+        setEnergy(prev => Math.max(0, prev + randomEffect.value));
+        break;
+      case 'energyBoost':
+        setEnergy(prev => prev + randomEffect.value);
+        break;
+      case 'doubleClick':
+        setTempEffects(prev => ({ ...prev, doubleClick: true }));
+        setTimeout(() => {
+          setTempEffects(prev => ({ ...prev, doubleClick: false }));
+        }, randomEffect.duration);
+        break;
+      case 'mystery':
+        // Just show the message
+        break;
+      default:
+        break;
+    }
+
+    // Show mystery effect notification (could expand this)
+    console.log(`Mystery Effect: ${randomEffect.message}`);
+  }, [energy]);
+
   // Check achievements
   useEffect(() => {
     mockData.achievements.forEach(achievement => {
