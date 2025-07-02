@@ -1,0 +1,186 @@
+.mystery-box {
+  width: 80px;
+  height: 80px;
+  cursor: pointer;
+  user-select: none;
+  animation: mysteryFloat 2s ease-in-out infinite;
+}
+
+.mystery-box-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 15px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.mystery-box:hover .mystery-box-inner {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.mystery-icon {
+  font-size: 2rem;
+  color: white;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  animation: iconPulse 1s ease-in-out infinite alternate;
+}
+
+.mystery-glow {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  background: radial-gradient(circle, rgba(102, 126, 234, 0.4), transparent 70%);
+  border-radius: 20px;
+  animation: glowPulse 2s ease-in-out infinite;
+  z-index: -1;
+}
+
+.mystery-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.mystery-particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #ffd93d;
+  border-radius: 50%;
+  animation: particleOrbit 3s linear infinite;
+}
+
+.particle-1 { 
+  animation-delay: 0s; 
+  top: 10%; 
+  left: 50%; 
+}
+
+.particle-2 { 
+  animation-delay: -0.5s; 
+  top: 30%; 
+  right: 10%; 
+}
+
+.particle-3 { 
+  animation-delay: -1s; 
+  bottom: 30%; 
+  right: 20%; 
+}
+
+.particle-4 { 
+  animation-delay: -1.5s; 
+  bottom: 10%; 
+  left: 50%; 
+}
+
+.particle-5 { 
+  animation-delay: -2s; 
+  bottom: 30%; 
+  left: 10%; 
+}
+
+.particle-6 { 
+  animation-delay: -2.5s; 
+  top: 30%; 
+  left: 20%; 
+}
+
+.mystery-timer {
+  position: absolute;
+  top: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 87, 87, 0.9);
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  animation: timerPulse 1s ease-in-out infinite;
+}
+
+.mystery-hint {
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 10px;
+  font-size: 0.7rem;
+  font-weight: bold;
+  white-space: nowrap;
+  animation: hintBounce 1.5s ease-in-out infinite;
+}
+
+/* Animations */
+@keyframes mysteryFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes iconPulse {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(1.2); opacity: 1; }
+}
+
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+
+@keyframes particleOrbit {
+  0% { transform: rotate(0deg) translateX(40px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(40px) rotate(-360deg); }
+}
+
+@keyframes timerPulse {
+  0%, 100% { transform: translateX(-50%) scale(1); }
+  50% { transform: translateX(-50%) scale(1.1); }
+}
+
+@keyframes hintBounce {
+  0%, 100% { transform: translateX(-50%) translateY(0px); }
+  50% { transform: translateX(-50%) translateY(-5px); }
+}
+
+/* Click effect */
+.mystery-box:active .mystery-box-inner {
+  transform: scale(0.9);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .mystery-box {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .mystery-icon {
+    font-size: 1.5rem;
+  }
+  
+  .mystery-hint {
+    font-size: 0.6rem;
+    bottom: -25px;
+  }
+  
+  .mystery-timer {
+    font-size: 0.7rem;
+    top: -20px;
+  }
+}
