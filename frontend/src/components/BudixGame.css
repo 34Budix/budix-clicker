@@ -160,4 +160,11 @@
     left: 10px;
     text-align: center;
   }
+  
+  .temp-effect-notification {
+    top: 70px;
+    right: 10px;
+    left: 10px;
+    text-align: center;
+  }
 }
