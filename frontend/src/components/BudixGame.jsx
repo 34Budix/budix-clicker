@@ -14,6 +14,25 @@ const BudixGame = () => {
   const [achievements, setAchievements] = useState([]);
   const [clickAnimations, setClickAnimations] = useState([]);
 
+  // Calculate evolution stage based on total clicks and energy
+  const getEvolutionStage = () => {
+    const totalUpgrades = upgrades.reduce((sum, upgrade) => sum + upgrade.level, 0);
+    
+    if (totalClicks >= 10000 || energy >= 1000000 || totalUpgrades >= 50) return 10; // Galaxy Core
+    if (totalClicks >= 5000 || energy >= 500000 || totalUpgrades >= 30) return 9;   // Black Hole
+    if (totalClicks >= 2500 || energy >= 100000 || totalUpgrades >= 20) return 8;   // Neutron Star
+    if (totalClicks >= 1000 || energy >= 50000 || totalUpgrades >= 15) return 7;    // Solar Flare Star
+    if (totalClicks >= 500 || energy >= 10000 || totalUpgrades >= 10) return 6;     // Plasma Star
+    if (totalClicks >= 250 || energy >= 5000 || totalUpgrades >= 8) return 5;       // Electric Orb
+    if (totalClicks >= 100 || energy >= 1000 || totalUpgrades >= 5) return 4;       // Fire Orb
+    if (totalClicks >= 50 || energy >= 500 || totalUpgrades >= 3) return 3;         // Flame Orb
+    if (totalClicks >= 25 || energy >= 100 || totalUpgrades >= 2) return 2;         // Hot Orb
+    if (totalClicks >= 10 || energy >= 50 || totalUpgrades >= 1) return 1;          // Warm Orb
+    return 0; // Basic Orb
+  };
+
+  const evolutionStage = getEvolutionStage();
+
   // Auto energy generation
   useEffect(() => {
     if (energyPerSecond > 0) {
