@@ -145,8 +145,19 @@ const BudixGame = () => {
             <EnergyOrb 
               onClick={handleOrbClick}
               energyLevel={Math.min(Math.floor(energy / 100), 10)}
+              evolutionStage={evolutionStage}
               clickAnimations={clickAnimations}
             />
+            
+            {/* Evolution stage indicator */}
+            <div className="evolution-indicator">
+              <div className="evolution-name">
+                {getEvolutionStageName(evolutionStage)}
+              </div>
+              <div className="evolution-progress">
+                Stage {evolutionStage + 1} / 11
+              </div>
+            </div>
           </div>
         </div>
         
