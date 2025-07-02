@@ -15,6 +15,9 @@ const BudixGame = () => {
   const [upgrades, setUpgrades] = useState(mockData.upgrades);
   const [achievements, setAchievements] = useState([]);
   const [clickAnimations, setClickAnimations] = useState([]);
+  const [quests, setQuests] = useState(mockData.quests);
+  const [mysteryEvents, setMysteryEvents] = useState([]);
+  const [tempEffects, setTempEffects] = useState({});
 
   // Calculate evolution stage based on total clicks and energy
   const getEvolutionStage = () => {
