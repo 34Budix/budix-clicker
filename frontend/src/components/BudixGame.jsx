@@ -286,6 +286,11 @@ const BudixGame = () => {
             currentEnergy={energy}
             onPurchase={purchaseUpgrade}
           />
+          
+          <QuestPanel 
+            quests={quests}
+            onClaimReward={handleClaimReward}
+          />
         </div>
       </div>
       
