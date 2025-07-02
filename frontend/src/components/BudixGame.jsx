@@ -3,6 +3,8 @@ import { mockData } from '../data/mockData';
 import EnergyOrb from './EnergyOrb';
 import GameStats from './GameStats';
 import UpgradeShop from './UpgradeShop';
+import QuestPanel from './QuestPanel';
+import MysteryEvent from './MysteryEvent';
 import './BudixGame.css';
 
 const BudixGame = () => {
