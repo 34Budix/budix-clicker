@@ -64,13 +64,15 @@ const BudixGame = () => {
     }
   }, [energyPerSecond]);
 
-  // Handle orb click
+  // Handle orb click with potential temporary effects
   const handleOrbClick = useCallback((event) => {
     const rect = event.currentTarget.getBoundingClientRect();
     const x = event.clientX - rect.left;
     const y = event.clientY - rect.top;
     
-    setEnergy(prev => prev + energyPerClick);
+    const clickValue = tempEffects.doubleClick ? energyPerClick * 2 : energyPerClick;
+    
+    setEnergy(prev => prev + clickValue);
     setTotalClicks(prev => prev + 1);
     
     // Add click animation
@@ -79,14 +81,14 @@ const BudixGame = () => {
       id, 
       x, 
       y, 
-      value: energyPerClick 
+      value: clickValue 
     }]);
     
     // Remove animation after 1 second
     setTimeout(() => {
       setClickAnimations(prev => prev.filter(anim => anim.id !== id));
     }, 1000);
-  }, [energyPerClick]);
+  }, [energyPerClick, tempEffects.doubleClick]);
 
   // Purchase upgrade
   const purchaseUpgrade = useCallback((upgradeId) => {
