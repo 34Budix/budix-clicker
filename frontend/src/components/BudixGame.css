@@ -137,6 +137,11 @@
   }
 }
 
+@keyframes tempEffectPulse {
+  0%, 100% { transform: translateX(0) scale(1); }
+  50% { transform: translateX(0) scale(1.05); }
+}
+
 /* Mobile responsive */
 @media (max-width: 768px) {
   .game-container {
