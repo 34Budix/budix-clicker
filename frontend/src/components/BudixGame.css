@@ -112,6 +112,20 @@
   z-index: 1000;
 }
 
+.temp-effect-notification {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+  padding: 1rem 1.5rem;
+  border-radius: 15px;
+  font-weight: bold;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  animation: slideIn 0.5s ease-out, tempEffectPulse 1s ease-in-out infinite;
+  z-index: 1000;
+  color: white;
+}
+
 @keyframes slideIn {
   from {
     transform: translateX(100%);
