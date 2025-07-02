@@ -133,5 +133,98 @@ export const mockData = {
       icon: '👑',
       condition: { type: 'total_energy', value: 100000 }
     }
+  ],
+
+  quests: [
+    {
+      id: 'first_clicks',
+      name: 'Getting Started',
+      description: 'Click the energy orb 25 times to get familiar with the game',
+      icon: '👆',
+      type: 'clicks',
+      targetValue: 25,
+      currentProgress: 0,
+      claimed: false,
+      reward: {
+        type: 'energy',
+        value: 100,
+        description: '+100 Energy'
+      }
+    },
+    {
+      id: 'energy_collector',
+      name: 'Energy Collector',
+      description: 'Accumulate 1,000 cosmic energy to prove your dedication',
+      icon: '⚡',
+      type: 'energy',
+      targetValue: 1000,
+      currentProgress: 0,
+      claimed: false,
+      reward: {
+        type: 'clickPower',
+        value: 2,
+        description: '+2 Click Power'
+      }
+    },
+    {
+      id: 'upgrade_enthusiast',
+      name: 'Upgrade Enthusiast',
+      description: 'Purchase your first 5 upgrades to boost your power',
+      icon: '🛒',
+      type: 'upgrades',
+      targetValue: 5,
+      currentProgress: 0,
+      claimed: false,
+      reward: {
+        type: 'autoClicker',
+        value: 2,
+        description: '+2 Energy per Second'
+      }
+    },
+    {
+      id: 'click_master',
+      name: 'Click Master',
+      description: 'Achieve 500 total clicks to become a clicking legend',
+      icon: '🎯',
+      type: 'clicks',
+      targetValue: 500,
+      currentProgress: 0,
+      claimed: false,
+      reward: {
+        type: 'energy',
+        value: 2500,
+        description: '+2,500 Energy Bonus'
+      }
+    },
+    {
+      id: 'evolution_seeker',
+      name: 'Evolution Seeker',
+      description: 'Evolve your orb to Stage 5 to unlock cosmic powers',
+      icon: '🌟',
+      type: 'evolution',
+      targetValue: 5,
+      currentProgress: 0,
+      claimed: false,
+      reward: {
+        type: 'clickPower',
+        value: 5,
+        description: '+5 Click Power'
+      }
+    },
+    {
+      id: 'energy_mogul',
+      name: 'Energy Mogul',
+      description: 'Reach 25,000 cosmic energy to dominate the cosmos',
+      icon: '👑',
+      type: 'energy',
+      targetValue: 25000,
+      currentProgress: 0,
+      claimed: false,
+      reward: {
+        type: 'autoClicker',
+        value: 10,
+        description: '+10 Energy per Second'
+      }
+    }
   ]
 };
