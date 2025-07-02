@@ -299,6 +299,16 @@ const BudixGame = () => {
           🏆 Achievements Unlocked: {achievements.length}
         </div>
       )}
+      
+      {/* Temporary effects indicator */}
+      {tempEffects.doubleClick && (
+        <div className="temp-effect-notification">
+          🔥 Double Click Power Active!
+        </div>
+      )}
+      
+      {/* Mystery Events */}
+      <MysteryEvent onMysteryClick={handleMysteryClick} />
     </div>
   );
 };
