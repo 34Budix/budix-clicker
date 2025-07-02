@@ -1,0 +1,222 @@
+.orb-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.energy-orb {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.1s ease;
+  animation: orbPulse 2s ease-in-out infinite;
+}
+
+.energy-orb:hover {
+  transform: scale(1.05);
+}
+
+.energy-orb:active {
+  transform: scale(0.95);
+  animation: clickPulse 0.2s ease;
+}
+
+.orb-core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 80%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #4ecdc4, #45b7d1, #2980b9);
+  box-shadow: 
+    inset 0 0 50px rgba(255, 255, 255, 0.3),
+    0 0 100px rgba(78, 205, 196, 0.5);
+}
+
+.orb-inner {
+  position: absolute;
+  top: 20%;
+  left: 20%;
+  width: 60%;
+  height: 60%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.8), transparent);
+  animation: innerGlow 3s ease-in-out infinite alternate;
+}
+
+.orb-glow {
+  position: absolute;
+  top: -20%;
+  left: -20%;
+  width: 140%;
+  height: 140%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(78, 205, 196, 0.3), transparent 70%);
+  animation: glowPulse 2s ease-in-out infinite;
+}
+
+.energy-rings {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.ring {
+  position: absolute;
+  border: 2px solid rgba(78, 205, 196, 0.6);
+  border-radius: 50%;
+  animation: ringRotate 4s linear infinite;
+}
+
+.ring-1 {
+  top: 10%;
+  left: 10%;
+  width: 80%;
+  height: 80%;
+  animation-delay: 0s;
+}
+
+.ring-2 {
+  top: 5%;
+  left: 5%;
+  width: 90%;
+  height: 90%;
+  animation-delay: -1.5s;
+  border-color: rgba(69, 183, 209, 0.4);
+}
+
+.ring-3 {
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  animation-delay: -3s;
+  border-color: rgba(41, 128, 185, 0.3);
+}
+
+.orb-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #4ecdc4;
+  border-radius: 50%;
+  animation: particleFloat 3s ease-in-out infinite;
+}
+
+.particle-1 { top: 10%; left: 50%; animation-delay: 0s; }
+.particle-2 { top: 20%; right: 20%; animation-delay: -0.5s; }
+.particle-3 { bottom: 20%; right: 30%; animation-delay: -1s; }
+.particle-4 { bottom: 10%; left: 50%; animation-delay: -1.5s; }
+.particle-5 { bottom: 20%; left: 20%; animation-delay: -2s; }
+.particle-6 { top: 30%; left: 10%; animation-delay: -2.5s; }
+.particle-7 { top: 50%; right: 10%; animation-delay: -3s; }
+.particle-8 { top: 40%; left: 5%; animation-delay: -3.5s; }
+
+.click-animation {
+  position: absolute;
+  pointer-events: none;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #4ecdc4;
+  text-shadow: 0 0 10px #4ecdc4;
+  animation: clickFloat 1s ease-out forwards;
+  z-index: 100;
+}
+
+/* Energy level variations */
+.energy-level-0 .orb-core { 
+  background: radial-gradient(circle at 30% 30%, #4ecdc4, #45b7d1, #2980b9);
+  box-shadow: inset 0 0 50px rgba(255, 255, 255, 0.3), 0 0 100px rgba(78, 205, 196, 0.5);
+}
+
+.energy-level-3 .orb-core { 
+  background: radial-gradient(circle at 30% 30%, #a8e6cf, #4ecdc4, #45b7d1);
+  box-shadow: inset 0 0 50px rgba(255, 255, 255, 0.4), 0 0 120px rgba(168, 230, 207, 0.6);
+}
+
+.energy-level-5 .orb-core { 
+  background: radial-gradient(circle at 30% 30%, #ffd93d, #ffb74d, #ff8a65);
+  box-shadow: inset 0 0 50px rgba(255, 255, 255, 0.5), 0 0 140px rgba(255, 217, 61, 0.7);
+}
+
+.energy-level-8 .orb-core { 
+  background: radial-gradient(circle at 30% 30%, #ff6b6b, #ee5a24, #c44569);
+  box-shadow: inset 0 0 50px rgba(255, 255, 255, 0.6), 0 0 160px rgba(255, 107, 107, 0.8);
+}
+
+.energy-level-10 .orb-core { 
+  background: radial-gradient(circle at 30% 30%, #a55eea, #8e44ad, #6c5ce7);
+  box-shadow: inset 0 0 50px rgba(255, 255, 255, 0.7), 0 0 200px rgba(165, 94, 234, 0.9);
+}
+
+/* Animations */
+@keyframes orbPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
+
+@keyframes clickPulse {
+  0% { transform: scale(0.95); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+@keyframes innerGlow {
+  0% { opacity: 0.8; }
+  100% { opacity: 1; }
+}
+
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.1); }
+}
+
+@keyframes ringRotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes particleFloat {
+  0%, 100% { transform: translateY(0px); opacity: 0.7; }
+  50% { transform: translateY(-20px); opacity: 1; }
+}
+
+@keyframes clickFloat {
+  0% {
+    transform: translateY(0px) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-80px) scale(1.2);
+    opacity: 0;
+  }
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .energy-orb {
+    width: 250px;
+    height: 250px;
+  }
+  
+  .click-animation {
+    font-size: 1.5rem;
+  }
+}
